@@ -9,6 +9,8 @@
         <Link>Home</Link>
 
         <Link href="about">About</Link>
+
+        <Link href="movies">Movies</Link>
       </div>
       <div class="content"><slot /></div>
     </div>
