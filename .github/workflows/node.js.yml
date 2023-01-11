@@ -43,21 +43,25 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-
-#       - name: Install pnpm
-#         uses: pnpm/action-setup@v2
-
-#       - name: Install
-#         run: pnpm install
-
-      - name: Build vite-plugin-ssr
-        run: npm run build
-
-#       - name: Build docs
-#         run: pnpm run docs:build
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+    
+#     steps:
+#       - name: Build vite-plugin-ssr
+#         run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
