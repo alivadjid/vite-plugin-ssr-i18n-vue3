@@ -3,6 +3,8 @@
     <Link :locale="locale">{{ locale }}</Link>
   </div>
 
+  {{ pageContext.locale }}
+
   <h1><LocaleText>Welcome</LocaleText></h1>
 
   <LocaleText>This page is</LocaleText>:
@@ -23,5 +25,7 @@ import Link from "../../renderer/Link.vue";
 
 import Counter from "./Counter.vue";
 import { inject } from "vue";
+const { usePageContext } = await import("../../renderer/usePageContext");
+const pageContext = usePageContext();
 // const pageContext = inject("pageContext");
 </script>
