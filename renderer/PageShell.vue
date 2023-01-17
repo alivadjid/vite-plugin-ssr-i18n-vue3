@@ -11,7 +11,7 @@
         <Link href="about">About</Link>
 
         <Link href="movies">Movies</Link>
-        {{ pageContext.locale }}
+        <span>{{ pageContext.locale }}</span>
       </div>
       <div class="content"><slot /></div>
     </div>
