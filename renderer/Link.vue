@@ -1,4 +1,5 @@
 <template>
+  {{ href }}
   <a :class="{ active: pageContext.urlPathname === $attrs.href }" :href="href">
     <slot></slot>
   </a>
