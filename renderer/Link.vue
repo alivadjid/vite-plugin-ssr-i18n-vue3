@@ -1,7 +1,7 @@
 <template>
   <a
     :class="{ active: pageContext.urlPathname === $attrs.href }"
-    :href="'/de-DE/'"
+    :href="'de-DE'"
   >
     <slot></slot>
   </a>
