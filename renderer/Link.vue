@@ -1,7 +1,8 @@
 <template>
-  {{ href }}
-  {{ locale }}
-  <a :class="{ active: pageContext.urlPathname === $attrs.href }" :href="href">
+  <a
+    :class="{ active: pageContext.urlPathname === $attrs.href }"
+    :href="'/de-DE/'"
+  >
     <slot></slot>
   </a>
 </template>
