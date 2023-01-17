@@ -11,6 +11,7 @@
         <Link href="about">About</Link>
 
         <Link href="movies">Movies</Link>
+        {{ pageContext.locale }}
       </div>
       <div class="content"><slot /></div>
     </div>
@@ -19,6 +20,8 @@
 
 <script lang="ts" setup>
 import Link from "./Link.vue";
+const { usePageContext } = await import("./usePageContext");
+const pageContext = usePageContext();
 </script>
 
 <style>
