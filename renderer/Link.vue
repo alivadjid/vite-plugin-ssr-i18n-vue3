@@ -1,31 +1,55 @@
 <template>
-  <a :class="{ active: pageContext.urlPathname === $attrs.href }" :href="href">
+  {{ props.href }}
+  <a
+    :class="[
+      pageContext.urlPathname === '/' && props.href ? '' : $style.active,
+      $style.link,
+    ]"
+    @click.stop="goTo"
+  >
     <slot></slot>
   </a>
 </template>
 
 <script lang="ts" setup>
 import { computed, useAttrs } from "vue";
-import { Locale, localeDefault } from "../locales/locales";
+import { Locale, localeDefault, locales } from "../locales/locales";
 
 const { usePageContext } = await import("./usePageContext");
 const pageContext = usePageContext();
 
 const attrs = useAttrs();
-const locale: Locale = (attrs.locale as Locale) || pageContext.locale;
+// const locale: Locale = (attrs.locale as Locale) || pageContext.locale;
+const props = defineProps<{
+  href?: "about" | "movies";
+  locale?: Locale;
+}>();
+function goTo() {
+  console.log(props.href, props.locale);
+  const href = props.href !== undefined ? `/${props.href}` : "";
+  let locale = props.locale !== undefined ? `/${props.locale}` : "";
+  console.log(href, locale);
+  const pathName = window.location.pathname;
+  const checkLocale = locales.includes(pathName.split("/")[1]);
+  console.log(checkLocale, pathName);
+  console.log("window", `${window.location.origin}${locale}${href}`);
+  if (checkLocale) locale = `/${pathName.split("/")[1]}`;
+  console.log(`${window.location.origin}${locale}${href}`);
+  window.location.href = `${window.location.origin}${locale}${href}`;
+}
 
-const href = computed(() => {
-  if (Object.keys(attrs).includes("href")) {
-    if (locale === localeDefault.value) {
-      return `${attrs.href}`;
-    }
-    return `/${locale}${attrs.href}`;
-  } else if (locale !== localeDefault.value) {
-    return `/${locale}/`;
-  } else {
-    return "/";
-  }
-});
+// const href = computed(() => {
+//   if (Object.keys(attrs).includes("href")) {
+//     if (locale === localeDefault.value) {
+//       return `${attrs.href}`;
+//     }
+//     return `/${locale}${attrs.href}`;
+//   } else if (locale !== localeDefault.value) {
+//     return `/${locale}/`;
+//   } else {
+//     return "/";
+//   }
+// });
 </script>
 
 <!-- <script setup lang="ts">
@@ -52,11 +76,12 @@ useRender(() =>
 );
 </script> -->
 
-<style scoped>
-a {
-  padding: 3px 10px;
+<style module lang="scss">
+.link {
+  cursor: pointer;
 }
-a.active {
-  background-color: #eee;
+.active {
+  color: blue;
+  padding: 3px 10px;
 }
 </style>

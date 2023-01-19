@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <div class="navigation">
-      <Link class="logo">
+      <Link>
         <img src="./logo.svg" height="64" width="64" alt="logo" />
       </Link>
 
