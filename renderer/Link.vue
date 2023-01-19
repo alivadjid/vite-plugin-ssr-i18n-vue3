@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import { computed, useAttrs } from "vue";
-import { Locale, localeDefault } from "../locales/locales";
+import { Locale, localeDefault, locales } from "../locales/locales";
 
 const { usePageContext } = await import("./usePageContext");
 const pageContext = usePageContext();
@@ -21,11 +21,21 @@ const pageContext = usePageContext();
 const attrs = useAttrs();
 // const locale: Locale = (attrs.locale as Locale) || pageContext.locale;
 const props = defineProps<{
-  href?: "about" | "movies" | Locale;
+  href?: "about" | "movies";
+  locale?: Locale;
 }>();
-
 function goTo() {
-  console.log("goTo");
+  console.log(props.href, props.locale);
+  const href = props.href !== undefined ? `/${props.href}` : "";
+  let locale = props.locale !== undefined ? `/${props.locale}` : "";
+  console.log(href, locale);
+  const pathName = window.location.pathname;
+  const checkLocale = locales.includes(pathName.split("/")[1]);
+  console.log(checkLocale, pathName);
+  console.log("window", `${window.location.origin}${locale}${href}`);
+  if (checkLocale) locale = `/${pathName.split("/")[1]}`;
+  console.log(`${window.location.origin}${locale}${href}`);
+  window.location.href = `${window.location.origin}${locale}${href}`;
 }
 
 // const href = computed(() => {
