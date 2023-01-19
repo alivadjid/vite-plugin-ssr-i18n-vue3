@@ -1,4 +1,4 @@
-import { createSSRApp, defineComponent, h } from "vue";
+import { createSSRApp, defineComponent, h, Suspense } from "vue";
 import PageShell from "./PageShell.vue";
 import { setPageContext } from "./usePageContext";
 import type { PageContext } from "./types";
@@ -11,11 +11,19 @@ function createApp(pageContext: PageContext) {
   const PageWithLayout = defineComponent({
     render() {
       return h(
-        PageShell,
+        Suspense,
         {},
         {
           default() {
-            return h(Page, pageProps || {});
+            return h(
+              PageShell,
+              {},
+              {
+                default() {
+                  return h(Page, pageProps || {});
+                },
+              }
+            );
           },
         }
       );

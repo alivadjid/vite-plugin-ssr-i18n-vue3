@@ -1,21 +1,19 @@
 <template>
-  <Suspense>
-    <div class="layout">
-      <div class="navigation">
-        <Link class="logo">
-          <img src="./logo.svg" height="64" width="64" alt="logo" />
-        </Link>
+  <div class="layout">
+    <div class="navigation">
+      <Link class="logo">
+        <img src="./logo.svg" height="64" width="64" alt="logo" />
+      </Link>
 
-        <Link>Home</Link>
+      <Link>Home</Link>
 
-        <Link href="about">About</Link>
+      <Link href="about">About</Link>
 
-        <Link href="movies">Movies</Link>
-        <span>{{ pageContext.locale }}</span>
-      </div>
-      <div class="content"><slot /></div>
+      <Link href="movies">Movies</Link>
+      <!-- <span>{{ pageContext.locale }}</span> -->
     </div>
-  </Suspense>
+    <div class="content"><slot /></div>
+  </div>
 </template>
 
 <script lang="ts" setup>
