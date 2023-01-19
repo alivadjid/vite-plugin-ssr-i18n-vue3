@@ -1,6 +1,6 @@
 <template>
   <div v-for="locale in locales" :key="locale">
-    <Link :locale="locale">{{ locale }}</Link>
+    <Link :locale="locale" :href="locale">{{ locale }}</Link>
   </div>
 
   {{ pageContext.locale }}

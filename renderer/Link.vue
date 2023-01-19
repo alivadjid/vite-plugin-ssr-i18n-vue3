@@ -1,5 +1,12 @@
 <template>
-  <a :class="{ active: pageContext.urlPathname === $attrs.href }" :href="href">
+  {{ props.href }}
+  <a
+    :class="[
+      pageContext.urlPathname === '/' && props.href ? '' : $style.active,
+      $style.link,
+    ]"
+    @click.stop="goTo"
+  >
     <slot></slot>
   </a>
 </template>
@@ -12,20 +19,27 @@ const { usePageContext } = await import("./usePageContext");
 const pageContext = usePageContext();
 
 const attrs = useAttrs();
-const locale: Locale = (attrs.locale as Locale) || pageContext.locale;
+// const locale: Locale = (attrs.locale as Locale) || pageContext.locale;
+const props = defineProps<{
+  href?: "about" | "movies" | Locale;
+}>();
 
-const href = computed(() => {
-  if (Object.keys(attrs).includes("href")) {
-    if (locale === localeDefault.value) {
-      return `${attrs.href}`;
-    }
-    return `/${locale}${attrs.href}`;
-  } else if (locale !== localeDefault.value) {
-    return `/${locale}/`;
-  } else {
-    return "/";
-  }
-});
+function goTo() {
+  console.log("goTo");
+}
+
+// const href = computed(() => {
+//   if (Object.keys(attrs).includes("href")) {
+//     if (locale === localeDefault.value) {
+//       return `${attrs.href}`;
+//     }
+//     return `/${locale}${attrs.href}`;
+//   } else if (locale !== localeDefault.value) {
+//     return `/${locale}/`;
+//   } else {
+//     return "/";
+//   }
+// });
 </script>
 
 <!-- <script setup lang="ts">
@@ -52,11 +66,12 @@ useRender(() =>
 );
 </script> -->
 
-<style scoped>
-a {
-  padding: 3px 10px;
+<style module lang="scss">
+.link {
+  cursor: pointer;
 }
-a.active {
-  background-color: #eee;
+.active {
+  color: blue;
+  padding: 3px 10px;
 }
 </style>
