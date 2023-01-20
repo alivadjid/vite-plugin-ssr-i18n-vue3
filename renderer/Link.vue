@@ -30,10 +30,11 @@ function goTo() {
   let locale = props.locale !== undefined ? `/${props.locale}` : "";
   console.log(href, locale);
   const pathName = window.location.pathname;
-  const checkLocale = locales.includes(pathName.split("/")[1]);
-  console.log(checkLocale, pathName);
+  const pathLocale = pathName.split("/")[1];
+  const isLocaleInclude = locales.includes(pathLocale);
+  console.log(isLocaleInclude, pathName);
   console.log("window", `${window.location.origin}${locale}${href}`);
-  if (checkLocale) locale = `/${pathName.split("/")[1]}`;
+  if (isLocaleInclude && props.locale !== pathLocale) locale = `/${pathLocale}`;
   console.log(`${window.location.origin}${locale}${href}`);
   window.location.href = `${window.location.origin}${locale}${href}`;
 }
