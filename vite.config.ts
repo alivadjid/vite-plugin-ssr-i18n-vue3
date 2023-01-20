@@ -3,7 +3,10 @@ import ssr from "vite-plugin-ssr/plugin";
 import { UserConfig } from "vite";
 
 const config: UserConfig = {
-  plugins: [vue(), ssr({ prerender: true })],
+  plugins: [
+    vue(),
+    ssr({ prerender: true, includeAssetsImportedByServer: true }),
+  ],
 
   base: "/",
 
