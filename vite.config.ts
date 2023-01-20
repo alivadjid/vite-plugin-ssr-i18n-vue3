@@ -5,6 +5,8 @@ import { UserConfig } from "vite";
 const config: UserConfig = {
   plugins: [vue(), ssr({ prerender: true })],
 
+  base: "/",
+
   resolve: {
     alias: {
       "@": __dirname,
