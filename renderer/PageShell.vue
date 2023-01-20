@@ -12,7 +12,13 @@
       <Link href="movies">Movies</Link>
       <!-- <span>{{ pageContext.locale }}</span> -->
     </div>
-    <div class="content"><slot /></div>
+    <h5>{{ pageContext.locale }}</h5>
+
+    <div class="content">
+      <h1>{{ pageContext.locale }}</h1>
+
+      <slot />
+    </div>
   </div>
 </template>
 
