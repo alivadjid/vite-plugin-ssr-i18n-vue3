@@ -4,7 +4,7 @@ import { extractLocale } from "../locales/extractLocale";
 
 function onBeforeRoute(pageContext: { urlOriginal: string }) {
   let urlMod = pageContext.urlOriginal;
-
+  console.log(urlMod);
   const { urlWithoutLocale, locale } = extractLocale(urlMod);
   urlMod = urlWithoutLocale;
   console.log("onBeforeRoute", urlMod, extractLocale(urlMod));
