@@ -31,6 +31,7 @@ async function startServer() {
     };
 
     const pageContext = await renderPage(pageContextInit);
+    console.log("server-index", pageContext);
     const { httpResponse } = pageContext;
     if (!httpResponse) return next();
     const { body, statusCode, contentType, earlyHints } = httpResponse;

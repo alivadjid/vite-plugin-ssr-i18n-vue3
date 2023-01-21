@@ -7,9 +7,9 @@ export { createApp };
 
 function createApp(pageContext: PageContext) {
   const { Page, pageProps } = pageContext;
-  console.log(pageContext);
-  console.log("::::::::");
-  console.log(pageProps);
+  // console.log(pageContext);
+  // console.log("::::::::");
+  // console.log(pageProps);
 
   const PageWithLayout = defineComponent({
     render() {

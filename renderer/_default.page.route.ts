@@ -2,12 +2,12 @@ export { onBeforeRoute };
 
 import { extractLocale } from "../locales/extractLocale";
 
-function onBeforeRoute(pageContext: { urlOriginal: string }) {
+async function onBeforeRoute(pageContext: { urlOriginal: string }) {
   let urlMod = pageContext.urlOriginal;
-  console.log(urlMod);
-  const { urlWithoutLocale, locale } = extractLocale(urlMod);
+  //console.log(urlMod);
+  const { urlWithoutLocale, locale } = await extractLocale(urlMod);
   urlMod = urlWithoutLocale;
-  console.log("onBeforeRoute", urlMod, extractLocale(urlMod));
+  //console.log("onBeforeRoute", urlMod, extractLocale(urlMod));
   return {
     pageContext: {
       // We make `locale` available as `pageContext.locale`.
