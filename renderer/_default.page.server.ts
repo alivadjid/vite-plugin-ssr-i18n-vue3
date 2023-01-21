@@ -9,6 +9,7 @@ export { render };
 export const passToClient = ["pageProps", "urlPathname", "locale", "__isVue"];
 
 async function render(pageContext: PageContextServer) {
+  console.log("render:::::", pageContext);
   const app = createApp(pageContext);
   const appHtml = await renderToString(app);
 
