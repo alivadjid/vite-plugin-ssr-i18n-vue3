@@ -6,7 +6,7 @@ import type { PageContextServer } from "./types";
 
 export { render };
 // See https://vite-plugin-ssr.com/data-fetching
-export const passToClient = ["pageProps", "urlPathname", "locale"];
+export const passToClient = ["pageProps", "urlPathname", "locale", "__isVue"];
 
 async function render(pageContext: PageContextServer) {
   const app = createApp(pageContext);
