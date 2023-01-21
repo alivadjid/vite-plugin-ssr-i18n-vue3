@@ -16,7 +16,7 @@ export function extractLocale(url: string) {
     urlWithoutLocale = "/" + urlPaths.slice(2).join("/");
   } else {
     locale = localeDefault.value;
-    locale = "de-DE";
+    // locale = "de-DE";
 
     urlWithoutLocale = url;
   }

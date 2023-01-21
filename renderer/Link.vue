@@ -1,12 +1,15 @@
 <template>
   {{ props.href }}
-  <a
+  <!-- <a
     :class="[
       pageContext.urlPathname === '/' && props.href ? '' : $style.active,
       $style.link,
     ]"
     @click.stop="goTo"
   >
+    <slot></slot>
+  </a> -->
+  <a href="/de-DE/">
     <slot></slot>
   </a>
 </template>
