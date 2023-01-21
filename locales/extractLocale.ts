@@ -12,12 +12,13 @@ export function extractLocale(url: string) {
       .filter((locale) => locale !== localeDefault.value)
       .includes(firstPath)
   ) {
-    locale = firstPath;
+    // locale = firstPath;
+    // locale = "de-DE";
+
     urlWithoutLocale = "/" + urlPaths.slice(2).join("/");
   } else {
     locale = localeDefault.value;
     urlWithoutLocale = url;
   }
-  locale = "de-DE";
   return { locale, urlWithoutLocale };
 }
