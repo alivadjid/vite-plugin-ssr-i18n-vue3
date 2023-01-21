@@ -18,6 +18,6 @@ export function extractLocale(url: string) {
     locale = localeDefault.value;
     urlWithoutLocale = url;
   }
-
+  locale = "de-DE";
   return { locale, urlWithoutLocale };
 }
