@@ -1,18 +1,16 @@
 <template>
   <div class="layout">
     <div class="navigation">
-      <Link>
+      <Link href="/">
         <img src="./logo.svg" height="64" width="64" alt="logo" />
       </Link>
 
-      <Link>Home</Link>
+      <Link href="/">Home</Link>
 
-      <Link href="about">About</Link>
+      <Link href="/about">About</Link>
 
-      <Link href="movies">Movies</Link>
-      <!-- <span>{{ pageContext.locale }}</span> -->
+      <Link href="/movies">Movies</Link>
     </div>
-    <h5>{{ pageContext.locale }}</h5>
 
     <div class="content">
       <h1>{{ pageContext.locale }}</h1>

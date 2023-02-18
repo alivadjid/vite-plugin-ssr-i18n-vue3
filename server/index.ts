@@ -31,7 +31,6 @@ async function startServer() {
     };
 
     const pageContext = await renderPage(pageContextInit);
-    console.log("server-index", pageContext);
     const { httpResponse } = pageContext;
     if (!httpResponse) return next();
     const { body, statusCode, contentType, earlyHints } = httpResponse;
@@ -40,6 +39,6 @@ async function startServer() {
     res.status(statusCode).type(contentType).send(body);
   });
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3001;
   app.listen(port);
 }

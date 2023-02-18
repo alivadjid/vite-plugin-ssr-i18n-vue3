@@ -4,7 +4,6 @@ import type { PageContextClient } from "./types";
 export { render };
 
 async function render(pageContext: PageContextClient) {
-  //console.log(":::::::::::::;;;;client',", pageContext);
   const app = createApp(pageContext);
   app.mount("#app");
 }

@@ -1,5 +1,5 @@
 <template>
-  <button type="button" @click="state.count++">
+  <button type="button" @click="($event) => state.count++">
     Counter {{ state.count }}
   </button>
 </template>
