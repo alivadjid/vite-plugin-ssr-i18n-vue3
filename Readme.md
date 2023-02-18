@@ -11,3 +11,8 @@ npm install
 
 npm run dev
 ```
+### Screenshots
+![изображение](https://user-images.githubusercontent.com/52418132/219900543-3e6e7c80-a2c2-4cf2-b898-0487fe5692cf.png)
+![изображение](https://user-images.githubusercontent.com/52418132/219900556-2f1ad276-ec4a-4133-ab8c-fa89f85c3eb3.png)
+
+
